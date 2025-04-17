@@ -1,0 +1,31 @@
+Step-1
+sudo apt update && sudo apt install -y git make python3 python3-pip cmake ninja-build ccache libffi-dev libssl-dev dfu-util
+
+Step-2
+git clone https://github.com/lvgl/lv_micropython.git
+cd lv_micropython
+git submodule update --init --recursive user_modules/lv_binding_micropython
+
+Step-3
+make -C mpy-cross
+
+Step-4
+cd ~
+mkdir -p ~/esp
+cd ~/esp
+git clone -b v5.2.3 https://github.com/espressif/esp-idf.git
+cd esp-idf
+./install.sh
+
+Step-5
+. ./export.sh
+
+Step-6(optional)
+echo ". $HOME/esp/esp-idf/export.sh" >> ~/.bashrc
+source ~/.bashrc
+
+Step-7
+cd ports/esp32
+make BOARD=ESP32_GENERIC
+
+Replace deploy with all if you don’t want to flash immediately.
