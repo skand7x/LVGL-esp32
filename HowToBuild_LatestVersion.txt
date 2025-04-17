@@ -29,3 +29,7 @@ cd ports/esp32
 make BOARD=ESP32_GENERIC
 
 Replace deploy with all if you don’t want to flash immediately.
+
+Use Wsl ubuntu for easy build. 
+Thank you,
+skand7x.
